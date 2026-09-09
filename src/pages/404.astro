@@ -1,0 +1,79 @@
+---
+
+import MainLayout from "@layouts/MainLayout.astro";
+
+const title_page: string = 'Página no encontrada'
+
+---
+
+
+<MainLayout
+  titlePage={title_page}
+  image="https://placehold.co/1200x630/1d1d1d/F0F0F0/png?text=404\nNot+Found&font=roboto"
+>
+  <section class="not-found-container">
+    <div class="error-code">404</div>
+    <h1>¡Ruta fuera del mapa!</h1>
+    <p>
+      La página que estás buscando no existe, cambió de dirección o aún es un borrador en construcción.
+    </p>
+
+    <div class="actions">
+      <a href="/" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .not-found-container {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .error-code {
+    font-size: 6rem;
+    font-weight: 800;
+    color: #00d26a;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+  }
+
+  p {
+    color: #aaa;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background-color: #00d26a;
+    color: #000;
+  }
+
+  .btn-primary:hover {
+    background-color: #00b85c;
+  }
+</style>
