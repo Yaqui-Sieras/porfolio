@@ -1,0 +1,18 @@
+---
+// src/pages/contacto.astro
+import MainLayout from '@/layouts/MainLayout.astro';
+
+const title_page: string = 'Contacto'
+const description_page: string = 'Puedes contactarme a través de los siguientes medios.'
+const image_page: string = 'https://placehold.co/1200x630/1d1d1d/F0F0F0/png?text=Contacto+Preview&font=roboto'
+
+---
+
+<MainLayout
+  titlePage={title_page}
+  description={description_page}
+  image={image_page}
+>
+  <h1>Contacto</h1>
+  <p>Puedes contactarme a través de los siguientes medios:</p>
+</MainLayout>
