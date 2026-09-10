@@ -1,6 +1,7 @@
 ---
 import HeaderPage from '@components/ui/HeaderPage.astro';
 import FooterPage from '@components/ui/FooterPage.astro';
+import { buildUrl } from '@constants/routes.ts';
 import faviconsvg from '@assets/favicons/favicon.svg';
 import ogImage from '@assets/imgs/og-image.png';
 import "sentei-css"
@@ -21,13 +22,15 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
 const socialImageURL = new URL(image, Astro.site || Astro.url);
+const faviconIcoPath = buildUrl("/favicon.ico");
+
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={faviconsvg.src} />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href={faviconIcoPath} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
