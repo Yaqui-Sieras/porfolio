@@ -5,9 +5,11 @@ interface Props {
   href: string;
   label: string;
   isActive: boolean;
+  target?: string;
 }
 
-const { href, label, isActive = false } = Astro.props;
+const { href, label, isActive = false, target="_self" } = Astro.props;
+const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
 
 ---
 
@@ -17,6 +19,8 @@ const { href, label, isActive = false } = Astro.props;
     'nav_item',
     { 'nav_item--active': isActive }
   ]}
+  target={target}
+  rel={rel}
 >
   {label}
 </a>
