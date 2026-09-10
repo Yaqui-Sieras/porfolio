@@ -1,9 +1,16 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+// src/pages/index.astro
+import MainLayout from '@/layouts/MainLayout.astro';
 
-const title_page = "Porfolio | Inicio"
+const title_page: string = "Porfolio | Inicio"
+const description_page: string = 'Desarrolladora Frontend con experiencia en Astro, React y TypeScript. Explora mis proyectos y código.'
+//const image_page: string = 'https://placehold.co/1200x630/1d1d1d/F0F0F0/png?text=Mi+Porfolio+Preview&font=roboto'
+
 ---
 
-<MainLayout title={title_page}>
-  <h1>Hello World</h1>
+<MainLayout
+  titlePage={title_page}
+  description={description_page}
+>
+  <h1>Bienvenido a mi porfolio</h1>
 </MainLayout>
