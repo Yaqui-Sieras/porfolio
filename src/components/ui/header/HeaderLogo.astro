@@ -1,0 +1,36 @@
+---
+// src/components/ui/header/HeaderLogo.astro
+
+interface Props {
+  icon?: string;
+  texto?: string;
+}
+
+const { icon = "🃏", texto = "" } = Astro.props;
+
+---
+
+<a href="/" class="logo_container">
+  <span class="logo_icon">{icon}</span>
+  <span class="logo_title">{texto}</span>
+</a>
+
+<style>
+  .logo_container {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo_icon {
+    font-size: 1.25rem;
+  }
+
+  .logo_title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: -0.025em;
+  }
+</style>
