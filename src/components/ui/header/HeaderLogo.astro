@@ -7,13 +7,16 @@ interface Props {
   texto?: string;
 }
 
-const { icon = "🃏", texto = "" } = Astro.props;
+const { img, icon, texto } = Astro.props;
 
 ---
 
-<a href="/" class="logo_container">
-  <span class="logo_icon">{icon}</span>
-  <span class="logo_title">{texto}</span>
+<a href="/" class="logo_link" aria-label="Logo">
+  <h1 class="logo_container">
+    {img && <img class="logo_img" alt="Logo" src={img} />}
+    {icon && <span class="logo_icon">{icon}</span>}
+    {texto && <span class="logo_title">{texto}</span>}
+  </h1>
 </a>
 
 <style>
