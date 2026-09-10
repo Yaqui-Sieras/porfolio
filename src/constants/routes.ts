@@ -50,11 +50,9 @@ export function buildUrl(path: string, options: BuildUrlOptions = {}): string {
 export const ROUTES = {
   HOME: buildUrl("/", { useAbsolute: true }),
   PORFOLIO: buildUrl("/", { useAbsolute: false }),
-  PROYECTS: buildUrl("proyectos/", { useAbsolute: false }),
+  PROYECTS: buildUrl("proyectos/", { useAbsolute: true }),
   CONTACT: buildUrl("contacto/", { useAbsolute: true }),
-  GITHUB_PROFILE: buildUrl("https://github.com/yaqui-sieras/", {
-    isExternal: true,
-  }),
+  GITHUB_PROFILE: buildUrl("https://github.com/yaqui-sieras/"),
 } as const;
 
 export interface NavItem {
