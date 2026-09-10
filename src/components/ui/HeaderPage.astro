@@ -1,5 +1,6 @@
 ---
-
+// src/components/ui/HeaderPage.astro
+import logoYS from '@assets/imgs/logoY-S.png';
 import HeaderLogo from '@components/ui/header/HeaderLogo.astro';
 import Navigation from '@components/ui/header/Navigation.astro';
 
@@ -7,7 +8,7 @@ import Navigation from '@components/ui/header/Navigation.astro';
 
 <header class="header_page">
   <div class="header_inner">
-    <HeaderLogo icon="🌐" texto="Yaqui-Sieras" />
+    <HeaderLogo img={logoYS.src}/>
     <Navigation />
   </div>
 </header>
