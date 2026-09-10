@@ -11,8 +11,12 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "devDependencies": {
+    "@types/node": "26.4.1"
+  },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "7.1.5"
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.3.1",
+    "sentei-css": "0.2.0"
   }
 }

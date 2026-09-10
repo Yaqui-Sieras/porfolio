@@ -1,22 +1,36 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
 import sitemap from "@astrojs/sitemap";
+import path from "node:path";
 
-// GitHub Actions define automáticamente la variable GITHUB_ACTIONS
+const folderName = path.basename(process.cwd());
+
+// Variables de entorno de plataformas CI/CD y Desarrollo
 const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+const isVercel = process.env.VERCEL === "1";
+const isDev = process.env.NODE_ENV === "development";
+
+const getSite = () => {
+  if (isDev) return;
+
+  if (isGitHubActions && process.env.GITHUB_REPOSITORY) {
+    const owner = process.env.GITHUB_REPOSITORY.split("/")[0];
+    return `https://${owner}.github.io`;
+  }
+  if (isVercel && process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  // Fallback por si compilas localmente para producción (astro build)
+  return `https://${folderName}.vercel.app`;
+};
 
 // https://astro.build/config
 export default defineConfig({
   // URL completa de tu sitio de GitHub Pages o el que uses
-  site: isGitHubActions
-    ? "https://Yaqui-Sieras.github.io"
-    : "https://Yaqui-Sieras.vercel.app",
+  site: getSite(),
 
-  // Nombre del repositorio (solo si NO es un repositorio de tipo usuario/organización principal)
-  // Si se está compilando en GitHub Actions usa la subcarpeta,
-  // si es en Vercel, Netlify o en local (npm run dev), usa la raíz '/'
-  base: isGitHubActions ? "/Porfolio/" : "/",
-
+  // En GH Actions usa la subcarpeta automáticamente, en los demás casos la raíz '/'
+  base: isGitHubActions ? `/${folderName}/` : "/",
+  trailingSlash: "always",
   integrations: [sitemap()],
 });
