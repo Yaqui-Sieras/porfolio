@@ -9,7 +9,14 @@ const currentPath = Astro.url.pathname;
 
 <nav class="navigation">
   {NAV_ITEMS.map((data) => {
-    const isActive = currentPath === data.href || (data.href !== '/' && currentPath.startsWith(data.href));
+    const isExternal = data.href.startsWith("https://");
+
+    const targetPathname = isExternal ? new URL(data.href).pathname : data.href;
+
+    const isActive = targetPathname === '/'
+      ? currentPath === '/'
+      : currentPath.startsWith(targetPathname);
+
     return (
       <NavItem
         href={data.href}
