@@ -1,22 +1,83 @@
 ---
+import HeaderPage from '@components/ui/HeaderPage.astro';
+import FooterPage from '@components/ui/FooterPage.astro';
+import faviconsvg from '@assets/favicons/favicon.svg';
+import ogImage from '@assets/imgs/og-image.png';
+import "sentei-css"
+
 interface Props {
-  title: string;
+	titlePage: string;
+	description?: string;
+	image?: string;
+	author?: string;
 }
 
-const { title } = Astro.props;
+const { 
+	titlePage, 
+	description = "Desarrolladora Frontend con experiencia en Astro, React y TypeScript. Explora mis proyectos y código.",
+	image = ogImage.src,
+	author = "Yaqui-Sieras"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
+const socialImageURL = new URL(image, Astro.site || Astro.url);
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+    <link rel="icon" type="image/svg+xml" href={faviconsvg.src} />
+		<link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <link rel="stylesheet" href="https://yaqui-sieras.github.io/miResetCSS/styles/sentei.css" />
+
+    <!-- SEO Principal -->
+		<title>{titlePage}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content={author} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Open Graph / Facebook / WhatsApp -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={titlePage} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={titlePage} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImageURL} />
   </head>
   <body>
-    <slot /> 
-  </body>
+		<div class="page">
+			<HeaderPage/>
+			
+			<main class="page__main">
+				<slot />
+			</main>
+			
+			<FooterPage/>
+		</div>
+	</body>
 </html>
+
+<style>
+	.page {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page__main {
+    width: 100%;
+    padding: 1.5rem;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
