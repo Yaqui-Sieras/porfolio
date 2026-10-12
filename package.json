@@ -1,7 +1,8 @@
 {
-  "name": "project",
+  "name": "porfolio",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "engines": {
     "node": "24"
   },
@@ -12,11 +13,11 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@types/node": "26.4.1"
+    "@types/node": "26.6.5"
   },
   "dependencies": {
+    "astro": "7.3.8",
     "@astrojs/sitemap": "3.7.4",
-    "astro": "7.3.1",
     "sentei-css": "0.2.0"
   }
 }
