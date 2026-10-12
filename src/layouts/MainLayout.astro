@@ -8,69 +8,68 @@ import ogImage from '@assets/imgs/og-image.png';
 import 'sentei-css';
 
 interface Props {
-	titlePage: string;
-	description?: string;
-	image?: string;
-	author?: string;
+  titlePage: string;
+  description?: string;
+  image?: string;
+  author?: string;
 }
 
-const { 
-	titlePage, 
-	description = "Desarrolladora Frontend con experiencia en Astro, React y TypeScript. Explora mis proyectos y código.",
-	image = ogImage.src,
-	author = "Yaqui-Sieras"
+const {
+  titlePage,
+  description = 'Desarrolladora Frontend con experiencia en Astro, React y TypeScript. Explora mis proyectos y código.',
+  image = ogImage.src,
+  author = 'Yaqui-Sieras',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
 const socialImageURL = new URL(image, Astro.site || Astro.url);
-const faviconIcoPath = buildUrl("/favicon.ico");
-
+const faviconIcoPath = buildUrl('/favicon.ico');
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={faviconsvg.src} />
-		<link rel="icon" href={faviconIcoPath} />
+    <link rel="icon" href={faviconIcoPath} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Principal -->
-		<title>{titlePage}</title>
-		<meta name="description" content={description} />
-		<meta name="author" content={author} />
-		<link rel="canonical" href={canonicalURL} />
-		<meta name="robots" content="index, follow" />
+    <title>{titlePage}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
 
-		<!-- Open Graph / Facebook / WhatsApp -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={titlePage} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={socialImageURL} />
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={titlePage} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
 
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:url" content={canonicalURL} />
-		<meta name="twitter:title" content={titlePage} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={socialImageURL} />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={titlePage} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
   </head>
   <body>
-		<div class="page">
-			<HeaderPage/>
-			
-			<main class="page__main">
-				<slot />
-			</main>
-			
-			<FooterPage/>
-		</div>
-	</body>
+    <div class="page">
+      <HeaderPage />
+
+      <main class="page__main">
+        <slot />
+      </main>
+
+      <FooterPage />
+    </div>
+  </body>
 </html>
 
 <style>
-	.page {
+  .page {
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
