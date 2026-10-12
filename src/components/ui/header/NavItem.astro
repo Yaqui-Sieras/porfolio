@@ -1,5 +1,5 @@
 ---
-// src/components/ui/header/NavItem.astro
+// @components/ui/header/NavItem.astro
 
 interface Props {
   href: string;
@@ -8,17 +8,13 @@ interface Props {
   target?: string;
 }
 
-const { href, label, isActive = false, target="_self" } = Astro.props;
+const { href, label, isActive = false, target = '_self' } = Astro.props;
 const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
-
 ---
 
 <a
   href={href}
-  class:list={[
-    'nav_item',
-    { 'nav_item--active': isActive }
-  ]}
+  class:list={['nav_item', { 'nav_item--active': isActive }]}
   target={target}
   rel={rel}
 >

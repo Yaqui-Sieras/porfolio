@@ -1,5 +1,5 @@
 ---
-// src/components/ui/header/HeaderLogo.astro
+// @components/ui/header/HeaderLogo.astro
 
 interface Props {
   img?: string;
@@ -8,7 +8,6 @@ interface Props {
 }
 
 const { img, icon, texto } = Astro.props;
-
 ---
 
 <a href="/" class="logo_link" aria-label="Logo">
@@ -27,7 +26,7 @@ const { img, icon, texto } = Astro.props;
     align-items: center;
     justify-content: center;
   }
-  
+
   .logo_container {
     display: flex;
     flex-direction: column;
