@@ -64,10 +64,10 @@ export function buildUrl(path: string, options: BuildUrlOptions = {}): string {
  * Diccionario de secciones base del proyecto.
  */
 export const ROUTES = {
-  HOME: buildUrl('/', { useAbsolute: false }),
-  PORFOLIO: buildUrl('porfolio/', { useAbsolute: true }),
-  PROYECTS: buildUrl('proyectos/', { useAbsolute: false }),
-  CONTACT: buildUrl('contacto/', { useAbsolute: false }),
+  HOME: buildUrl('/', { useAbsolute: true }),
+  PORFOLIO: buildUrl('/'),
+  PROYECTS: buildUrl('proyectos/', { useAbsolute: true }),
+  CONTACT: buildUrl('contacto/', { useAbsolute: true }),
   GITHUB_PROFILE: buildUrl('https://github.com/yaqui-sieras/'),
 } as const;
 
@@ -80,7 +80,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: readonly NavItem[] = [
   { label: 'Inicio', href: ROUTES.HOME, icon: '🏯' },
-  { label: 'Porfolio', href: ROUTES.PORFOLIO, icon: '💼', target: '_blank' },
+  { label: 'Porfolio', href: ROUTES.PORFOLIO, icon: '💼' },
   { label: 'Proyectos', href: ROUTES.PROYECTS, icon: '💻' },
   { label: 'Contacto', href: ROUTES.CONTACT, icon: '📩' },
   { label: 'GitHub', href: ROUTES.GITHUB_PROFILE, icon: '🐈‍⬛' },
