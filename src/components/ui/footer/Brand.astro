@@ -1,0 +1,23 @@
+---
+// @components/ui/footer/Brand.astro
+import { SITE_INFO } from '@constants/site';
+---
+
+<div class="footer-brand">
+  <p class="brand-title">{SITE_INFO.author}</p>
+  <p class="brand-desc">{SITE_INFO.title}</p>
+</div>
+
+<style>
+  .brand-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #f4f4f5;
+  }
+
+  .brand-desc {
+    font-size: 0.875rem;
+    color: #a1a1aa;
+    margin: 0.25rem 0 0;
+  }
+</style>

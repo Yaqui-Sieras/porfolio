@@ -1,0 +1,40 @@
+---
+// @components/ui/footer/Socials.astro
+import Link from '@components/ui/common/Link.astro';
+import { SOCIAL_LINKS } from '@constants/routes.ts';
+---
+
+<ul class="footer-socials">
+  {SOCIAL_LINKS.map(({ name, url, icon, target }) => (
+    <li>
+      <Link href={url} class="social-badge" target={target}>
+        {icon} {name}
+      </Link>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .footer-socials {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  :global(.social-badge) {
+    font-size: 0.85rem;
+    background-color: #202023;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #2e2e32;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+  }
+
+  :global(.social-badge:hover) {
+    background-color: #2a2a2e;
+    border-color: #3f3f46;
+  }
+</style>
