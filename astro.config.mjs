@@ -1,18 +1,18 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import sitemap from "@astrojs/sitemap";
-import path from "node:path";
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+import path from 'node:path';
 
 // Extracción limpia de datos del repositorio de GitHub Pages
 const ghRepository = process.env.GITHUB_REPOSITORY;
-const [ghOwner, ghRepoName] = ghRepository ? ghRepository.split("/") : [];
+const [ghOwner, ghRepoName] = ghRepository ? ghRepository.split('/') : [];
 
 // Flags de entorno unificados para todas las plataformas CI/CD soportadas
-const isDev = process.env.NODE_ENV === "development";
-const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
-const isVercel = process.env.VERCEL === "1";
-const isNetlify = process.env.NETLIFY === "true";
-const isCloudflare = process.env.CF_PAGES === "1";
+const isDev = process.env.NODE_ENV === 'development';
+const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
+const isVercel = process.env.VERCEL === '1';
+const isNetlify = process.env.NETLIFY === 'true';
+const isCloudflare = process.env.CF_PAGES === '1';
 
 /**
  * Determina dinámicamente la URL raíz (`site`) según la plataforma de despliegue activa.
@@ -57,7 +57,7 @@ const getDeploymentBase = () => {
     return `/${ghRepoName}/`;
   }
 
-  return "/";
+  return '/';
 };
 
 // https://astro.build/config
@@ -67,6 +67,6 @@ export default defineConfig({
 
   // Ruta base adaptativa para GitHub Pages o raíz del dominio
   base: getDeploymentBase(),
-  trailingSlash: "always",
+  trailingSlash: 'always',
   integrations: [sitemap()],
 });

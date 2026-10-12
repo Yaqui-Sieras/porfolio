@@ -1,0 +1,72 @@
+---
+// @components/ui/footer/Legal.astro
+import Link from '@components/ui/common/Link.astro';
+import { LEGAL_LINKS } from '@/constants/routes';
+import { SITE_INFO } from '@/constants/site';
+
+interface Props {
+  author?: string;
+  license?: string;
+  links?: readonly { label: string; href: string }[];
+}
+
+const {
+  author = SITE_INFO.author,
+  license = SITE_INFO.license,
+  links = LEGAL_LINKS,
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<div class="footer-legal">
+  <div class="legal-info">
+    <small>
+      &copy; {currentYear} {author}.
+    </small>
+    {license && <small class="license">• Licencia {license}</small>}
+  </div>
+
+  {links.length > 0 && (
+    <nav class="legal-nav" aria-label="Enlaces legales">
+      {links.map(({ label, href }) => (
+        <Link href={href}>{label}</Link>
+      ))}
+    </nav>
+  )}
+</div>
+
+<style>
+  .footer-legal {
+    max-width: 1200px;
+    width: 100%;
+    color: #71717a;
+    font-size: 0.8rem;
+    padding-block: 1rem;
+    border-top: 1px solid #232326;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .legal-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .legal-nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .footer-legal {
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+</style>

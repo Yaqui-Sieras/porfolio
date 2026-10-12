@@ -1,0 +1,69 @@
+---
+// @components/ui/common/Navigation.astro
+import { NAV_ITEMS, type NavItem } from '@/constants/routes';
+import Link from '@components/ui/common/Link.astro';
+
+interface Props {
+  links?: readonly NavItem[];
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  links = NAV_ITEMS,
+  ariaLabel = 'Navegación',
+  class: className = '',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav aria-label={ariaLabel} class:list={['navigation', className]}>
+  <ul class="nav_list">
+    {links.map(({ label, href, target }) => {
+      const isExternal = href.startsWith('https://');
+      const targetPathname = isExternal ? new URL(href).pathname : href;
+
+      const isActive =
+        targetPathname === '/'
+          ? currentPath === '/'
+          : currentPath.startsWith(targetPathname);
+
+      return (
+        <li class="nav_item">
+          <Link
+            href={href}
+            target={target}
+            class:list={['nav_link', { 'nav_link--active': isActive }]}
+          >
+            {label}
+          </Link>
+        </li>
+      );
+    })}
+  </ul>
+</nav>
+
+<style>
+  .navigation {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav_list {
+    list-style: none;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .nav_item {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+</style>

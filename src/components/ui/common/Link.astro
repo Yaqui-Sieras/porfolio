@@ -1,0 +1,34 @@
+---
+// @components/ui/common/Link.astro
+import { isExternalUrl } from '@/constants/routes';
+
+interface Props {
+  href: string;
+  target?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { href, target, class: className = '', ...rest } = Astro.props;
+
+const isExternal = isExternalUrl(href);
+const finalTarget = target ?? (isExternal ? '_blank' : '_self');
+const rel = finalTarget === '_blank' ? 'noopener noreferrer' : undefined;
+---
+
+<a
+  class:list={['ui_link', className]}
+  href={href}
+  target={finalTarget}
+  rel={rel}
+  {...rest}
+>
+  <slot />
+</a>
+
+<style>
+  .ui_link {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

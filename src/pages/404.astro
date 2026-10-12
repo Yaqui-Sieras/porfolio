@@ -1,11 +1,9 @@
 ---
+// src/pages/404.astro
+import MainLayout from '@layouts/MainLayout.astro';
 
-import MainLayout from "@layouts/MainLayout.astro";
-
-const title_page: string = 'Página no encontrada'
-
+const title_page: string = 'Página no encontrada';
 ---
-
 
 <MainLayout
   titlePage={title_page}
@@ -15,11 +13,14 @@ const title_page: string = 'Página no encontrada'
     <div class="error-code">404</div>
     <h1>¡Ruta fuera del mapa!</h1>
     <p>
-      La página que estás buscando no existe, cambió de dirección o aún es un borrador en construcción.
+      La página que estás buscando no existe, cambió de dirección o aún es un
+      borrador en construcción.
     </p>
 
     <div class="actions">
-      <a href="/" class="btn btn-primary">Volver al Inicio</a>
+      <a href="/" class="btn btn-primary">
+        Volver al Inicio
+      </a>
     </div>
   </section>
 </MainLayout>
