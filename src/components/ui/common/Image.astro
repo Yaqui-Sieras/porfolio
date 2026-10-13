@@ -5,8 +5,9 @@ import type { ImageMetadata } from 'astro';
 interface Props {
   src: string | ImageMetadata;
   alt: string;
-  width?: number | `${number}`;
-  height?: number | `${number}`;
+  width?: number;
+  height?: number;
+  unit?: 'px' | 'rem' | '%' | 'em' | 'vw' | 'vh';
   class?: string;
   blur?: string;
   brightness?: number;
@@ -20,6 +21,7 @@ const {
   alt,
   width,
   height,
+  unit = 'px',
   class: className = '',
   blur = '0px',
   brightness = 1,
@@ -29,6 +31,12 @@ const {
 } = Astro.props;
 
 const imageSrc = typeof src === 'string' ? src : src.src;
+
+const cssWidth = width ? `${width}${unit}` : 'auto';
+const cssHeight = height ? `${height}${unit}` : 'auto';
+
+const htmlWidth = unit === 'px' ? width : undefined;
+const htmlHeight = unit === 'px' ? height : undefined;
 ---
 
 <figure
@@ -47,9 +55,13 @@ const imageSrc = typeof src === 'string' ? src : src.src;
   <img
     src={imageSrc}
     alt={alt}
-    {...(width !== undefined && { width })}
-    {...(height !== undefined && { height })}
+    {...(htmlWidth !== undefined && { width: htmlWidth })}
+    {...(htmlHeight !== undefined && { height: htmlHeight })}
     class="ui-image__img"
+    style={{
+      '--img-width': cssWidth,
+      '--img-height': cssHeight,
+    }}
   />
 
   {caption && <figcaption class="ui-image__caption">{caption}</figcaption>}
@@ -91,9 +103,9 @@ const imageSrc = typeof src === 'string' ? src : src.src;
   .ui-image__img {
     position: relative;
     z-index: 1;
+    width: var(--img-width);
     max-width: 100%;
-    height: auto;
-    border-radius: 1rem;
+    height: var(--img-height);
     object-fit: cover;
   }
 
