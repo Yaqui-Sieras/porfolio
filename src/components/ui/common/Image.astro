@@ -8,6 +8,7 @@ interface Props {
   width?: number;
   height?: number;
   unit?: 'px' | 'rem' | '%' | 'em' | 'vw' | 'vh';
+  aspectRatio?: string;
   class?: string;
   blur?: string;
   brightness?: number;
@@ -22,6 +23,7 @@ const {
   width,
   height,
   unit = 'px',
+  aspectRatio = 'auto',
   class: className = '',
   blur = '0px',
   brightness = 1,
@@ -61,6 +63,7 @@ const htmlHeight = unit === 'px' ? height : undefined;
     style={{
       '--img-width': cssWidth,
       '--img-height': cssHeight,
+      '--img-aspect-ratio': aspectRatio,
     }}
   />
 
@@ -108,6 +111,7 @@ const htmlHeight = unit === 'px' ? height : undefined;
     width: var(--img-width);
     max-width: 100%;
     height: var(--img-height);
+    aspect-ratio: var(--img-aspect-ratio);
     object-fit: cover;
   }
 
