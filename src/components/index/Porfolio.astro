@@ -1,0 +1,174 @@
+---
+import Image from '@components/ui/common/Image.astro';
+import foto from '@assets/imgs/foto_yaqui.jpg';
+---
+
+<div class="container">
+  <!-- ================= COLUMNA IZQUIERDA (Datos personales) ================= -->
+  <section class="about-me">
+    <!-- Foto de Perfil -->
+    <Image src={foto} width={300} aspectRatio="1/1" alt="Yaqueline Velazquez" />
+    <!-- Contacto -->
+    <article class="cv-section-side">
+      <h3>Contacto</h3>
+      <ul>
+        <li>
+          <span>📱</span> (+595) 985 507-540 <small>(WhatsApp)</small>[cite: 1]
+        </li>
+        <li>
+          <span>📧</span>{' '}
+          <a href="mailto:yaquelinevr94@gmail.com">yaquelinevr94@gmail.com</a>
+        </li>
+        <li>
+          <span>📍</span> Ciudad: Moron
+        </li>
+      </ul>
+    </article>
+    <!-- Conocimientos -->
+    <article class="cv-section-side">
+      <h3>Conocimientos</h3>
+      <ul>
+        <li>
+          • Uso de herramientas de Google Workspace (Docs, Sheets, Slides,
+          Forms)
+        </li>
+        <li>• Uso de Herramientas de Microsoft</li>
+      </ul>
+    </article>
+    <!-- Habilidades Técnicas -->
+    <article class="cv-section-side">
+      <h3>Habilidades Técnicas</h3>
+      <div class="cv-subgroup">
+        <strong>• Sistemas Operativos:</strong>
+        <p>Windows 10/11, Linux.</p>
+      </div>
+      <div class="cv-subgroup">
+        <strong>• Redes y Conectividad:</strong>
+        <p>Gestión de routers/switches. Diagnóstico de conectividad.</p>
+      </div>
+      <div class="cv-subgroup">
+        <strong>• Hardware y Periféricos:</strong>
+        <p>Ensamblaje y reemplazo de componentes.</p>
+      </div>
+      <div class="cv-subgroup">
+        <strong>• Soporte Remoto:</strong>
+        <p>TeamViewer, Anydesk.</p>
+      </div>
+      <div class="cv-subgroup">
+        <strong>• Soft Skills:</strong>
+        <p>Resolución de problemas, Capacidad de adaptación.</p>
+      </div>
+    </article>
+    <!-- Idiomas -->
+    <article class="cv-section-side">
+      <h3>Idiomas</h3>
+      <ul>
+        <li>
+          <strong>ESPAÑOL:</strong> Nativo
+        </li>
+        <li>
+          <strong>INGLÉS:</strong> Básico
+        </li>
+        <li class="cv-note">
+          CENTRO UNIVERSITARIO DE IDIOMAS
+          <br />
+          Nivel II de Programa Extracurricular de Inglés
+        </li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ================= COLUMNA DERECHA (Contenido Profesional y Formación) ================= -->
+  <section class="profile">
+    <!-- Encabezado Principal -->
+    <header class="cv-header">
+      <h1>YAQUELINE VELAZQUEZ</h1>
+      <h2>DESARROLLADORA WEB FRONTEND</h2>
+    </header>
+
+    <!-- Perfil Profesional -->
+    <article class="cv-section-profile">
+      <h3>Perfil Profesional</h3>
+      <p>
+        Soy una desarrolladora web frontend apasionada por la creación de
+        experiencias digitales atractivas y funcionales. Me especializo en
+        tecnologías modernas como JavaScript, React, Astro y Node.js. Mi
+        objetivo es contribuir al desarrollo de aplicaciones web innovadoras y
+        de alta calidad.
+      </p>
+    </article>
+
+    <!-- Experiencia Laboral -->
+    <article class="cv-section-profile">
+      <h3>Experiencia Laboral</h3>
+      <div class="cv-experience-item">
+        <div class="cv-item-header">
+          <h4>MINISTERIO DE DEFENSA DEL PARAGUAY (MDP)</h4>
+          <span class="cv-date">(2015-2016)</span>
+        </div>
+        <p class="cv-role">ORDENANZA (Secretaría gral.)</p>
+        <ul>
+          <li>
+            Clasificación, búsqueda, entrega y archivado de documentos públicos.
+          </li>
+          <li>Trabajo bajo presión, resolución de problemas.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Formación Académica -->
+    <article class="cv-section-profile">
+      <h3>Formación Académica</h3>
+      <div class="cv-education-list">
+        <div class="cv-edu-item">
+          <div class="cv-item-header">
+            <strong>ESCUELA, 1ER Y 2DO. CICLO</strong>
+            <span class="cv-date">(2001-2009)</span>
+          </div>
+          <p class="cv-subtext">
+            Sagrado Corazón de Jesús (Salesianito) | Asunción
+          </p>
+        </div>
+        <div class="cv-edu-item">
+          <div class="cv-item-header">
+            <strong>TÉCNICO EN ELECTROMECÁNICA</strong>
+            <span class="cv-date">(2010 - 2012)</span>
+          </div>
+          <p class="cv-subtext">
+            Sagrado Corazón de Jesús (Salesianito) | Asunción
+          </p>
+        </div>
+      </div>
+    </article>
+  </section>
+</div>
+
+<style>
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    min-height: calc(100vh - 4rem);
+    background-color: #151617;
+    margin-block-start: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+  }
+
+  .about-me {
+    width: 35%;
+    min-height: calc(100vh - 4rem);
+    background-color: #2c2d2f;
+    padding: 1.5rem;
+    margin-block: 1.5rem;
+    margin-inline-start: 1.5rem;
+  }
+
+  .profile {
+    width: 65%;
+    min-height: calc(100vh - 4rem);
+    padding: 1.25rem;
+    text-align: center;
+  }
+</style>

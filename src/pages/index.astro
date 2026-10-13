@@ -1,6 +1,7 @@
 ---
 // src/pages/index.astro
 import MainLayout from '@layouts/MainLayout.astro';
+import Porfolio from '@components/index/Porfolio.astro';
 
 const title_page: string = 'Porfolio | Inicio';
 const description_page: string =
@@ -9,5 +10,5 @@ const description_page: string =
 ---
 
 <MainLayout titlePage={title_page} description={description_page}>
-  <h1>Bienvenido a mi porfolio</h1>
+  <Porfolio />
 </MainLayout>
